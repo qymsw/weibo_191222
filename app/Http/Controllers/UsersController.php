@@ -29,5 +29,9 @@ class UsersController extends Controller
         
         return;
     }
+
+    public function test(){
+        return view('users.test');
+    }
     
 }
