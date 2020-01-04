@@ -20,7 +20,8 @@ Route::get('/about', 'StaticPagesController@about')->name('about');
 Route::get('/signup', 'UsersController@create')->name('signup');
 
 Route::resource('users', 'UsersController');
-Route::get('/test','UsersController@test');
+Route::get('/test','UsersController@test')->name('users.test');
+Route::post('/test','UsersController@testpost')->name('users.testpost');
 
 
 // Route::get('/users', 'UsersController@index')->name('users.index');
