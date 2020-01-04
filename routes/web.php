@@ -23,6 +23,10 @@ Route::resource('users', 'UsersController');
 Route::get('/test','UsersController@test')->name('users.test');
 Route::post('/test','UsersController@testpost')->name('users.testpost');
 
+Route::get('login','SessionsController@create')->name('login');
+Route::post('login','SessionsController@store')->name('login');
+Route::delete('logout','SessionsController@destroy')->name('logout');
+
 
 // Route::get('/users', 'UsersController@index')->name('users.index');
 // Route::get('/users/create', 'UsersController@create')->name('users.create');
