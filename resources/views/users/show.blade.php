@@ -9,6 +9,7 @@
         <section class="user_info">
           @include('shared._user_info', ['user' => $user])
           {{$user->name}}
+          <a href="{{route('test',$user->id)}}">test</a>
         </section>
       </div>
     </div>

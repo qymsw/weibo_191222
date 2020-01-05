@@ -41,6 +41,46 @@ class UsersController extends Controller
         
     }
 
+    public function edit(User $user)
+    {
+        return view('users.edit', compact('user'));
+    }
+
+    public function update11(User $user, Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('users.show', $user->id);
+    }
+
+
+    public function update(User $user, Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'password' => 'nullable|confirmed|min:6'
+        ]);
+
+        $data = [];
+        $data['name'] = $request->name;
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+        $user->update($data);
+
+        session()->flash('success', '个人资料更新成功！');
+
+        return redirect()->route('users.show', $user);
+    }
+
     public function test(){
 
         return view('users.test');

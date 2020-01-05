@@ -20,12 +20,16 @@ Route::get('/about', 'StaticPagesController@about')->name('about');
 Route::get('/signup', 'UsersController@create')->name('signup');
 
 Route::resource('users', 'UsersController');
-Route::get('/test','UsersController@test')->name('users.test');
-Route::post('/test','UsersController@testpost')->name('users.testpost');
+// Route::get('/test','UsersController@test')->name('users.test');
 
 Route::get('login','SessionsController@create')->name('login');
 Route::post('login','SessionsController@store')->name('login');
 Route::delete('logout','SessionsController@destroy')->name('logout');
+
+
+Route::get('/test/{id}','TestController@index')->name('test');
+// Route::patch('/test','TestController@test')->name('testtest');
+
 
 
 // Route::get('/users', 'UsersController@index')->name('users.index');
